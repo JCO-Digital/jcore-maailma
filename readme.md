@@ -1,1 +1,1 @@
-# JCORE Lohko
+# JCORE Global Content
