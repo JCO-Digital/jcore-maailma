@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       JCORE Global Content
+ * Plugin Name:       JCORE Maailma
  * Description:       A global content post type and block.
  * Version: 0.1.0
  * Requires at least: 6.7
@@ -9,17 +9,21 @@
  * Author URI:        https://jco.fi
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       jcore-global-content
+ * Text Domain:       jcore-maailma
  * Domain Path:       /languages
  *
- * @package Jcore\GlobalContent
+ * @package Jcore\maailma
  */
 
-namespace Jcore\GlobalContent;
+namespace Jcore\Maailma;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
+define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
+
 
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
@@ -30,11 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 function block_init() {
-	define( 'JCORE_GLOBAL_CONTENT_BUILD_DIR', __DIR__ . '/build' );
-	define( 'JCORE_GLOBAL_CONTENT_MANIFEST', JCORE_GLOBAL_CONTENT_BUILD_DIR . '/blocks-manifest.php' );
 
 	// Check if build folder exists.
-	if ( ! file_exists( JCORE_GLOBAL_CONTENT_MANIFEST ) ) {
+	if ( ! file_exists( JCORE_MAAILMA_MANIFEST ) ) {
 		return;
 	}
 
@@ -46,7 +48,7 @@ function block_init() {
 	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
 	 */
 	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( JCORE_GLOBAL_CONTENT_BUILD_DIR, JCORE_GLOBAL_CONTENT_MANIFEST );
+		wp_register_block_types_from_metadata_collection( JCORE_MAAILMA_BUILD_DIR, JCORE_MAAILMA_MANIFEST );
 		return;
 	}
 
@@ -57,19 +59,19 @@ function block_init() {
 	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
 	 */
 	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( JCORE_GLOBAL_CONTENT_BUILD_DIR, JCORE_GLOBAL_CONTENT_MANIFEST );
+		wp_register_block_metadata_collection( JCORE_MAAILMA_BUILD_DIR, JCORE_MAAILMA_MANIFEST );
 	}
 	/**
 	 * Registers the block type(s) in the `blocks-manifest.php` file.
 	 *
 	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
 	 */
-	$manifest_data = require JCORE_GLOBAL_CONTENT_MANIFEST;
+	$manifest_data = require JCORE_MAAILMA_MANIFEST;
 	foreach ( array_keys( $manifest_data ) as $block_type ) {
 		register_block_type( __DIR__ . "/build/{$block_type}" );
 	}
 }
-add_action( 'init', '\Jcore\GlobalContent\block_init' );
+add_action( 'init', '\Jcore\Maailma\block_init' );
 
 /**
  * Set the script translations.
@@ -77,12 +79,11 @@ add_action( 'init', '\Jcore\GlobalContent\block_init' );
  * @return void
  */
 function set_script_translations() {
-	$manifest_dir = __DIR__ . '/build';
-	if ( ! is_dir( $manifest_dir ) ) {
+	if ( ! is_dir( JCORE_MAAILMA_BUILD_DIR ) ) {
 		return;
 	}
 
-	$block_json_paths = glob( $manifest_dir . '/*/block.json' );
+	$block_json_paths = glob( JCORE_MAAILMA_BUILD_DIR . '/*/block.json' );
 	foreach ( $block_json_paths as $block_json_path ) {
 		if ( ! file_exists( $block_json_path ) ) {
 			continue;
@@ -106,5 +107,5 @@ function set_script_translations() {
 		wp_set_script_translations( $script_handle . '-editor-script', $textdomain, plugin_dir_path( __FILE__ ) . 'languages' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'Jcore\Lohko\set_script_translations' );
-add_action( 'admin_enqueue_scripts', 'Jcore\Lohko\set_script_translations' );
+add_action( 'wp_enqueue_scripts', 'Jcore\Maailma\set_script_translations' );
+add_action( 'admin_enqueue_scripts', 'Jcore\Maailma\set_script_translations' );

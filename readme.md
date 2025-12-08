@@ -1,1 +1,1 @@
-# JCORE Global Content
+# JCORE Maailma
