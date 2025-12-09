@@ -23,7 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
 define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
+define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
 
+require_once __DIR__ . '/post-type.php';
+require_once __DIR__ . '/content.php';
 
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
