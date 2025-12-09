@@ -50,13 +50,22 @@ add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3
  */
 function get_global_content( $id ) {
 	if ( is_int( $id ) ) {
-		$post = get_post( $id );
+		$post_id = $id;
 	} else {
 		$post = get_page_by_path( $id, OBJECT, JCORE_MAAILMA_POST_TYPE );
+		if ( ! $post ) {
+			return null;
+		}
+		$post_id = $post->ID;
 	}
+	if ( function_exists( 'pll_get_post' ) ) {
+		$post_id = pll_get_post( $post_id );
+	}
+	$post = get_post( $post_id );
 	if ( ! $post ) {
 		return null;
 	}
+
 	return filter_content( $post->post_content );
 }
 

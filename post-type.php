@@ -59,3 +59,11 @@ add_action(
 		);
 	}
 );
+
+add_filter(
+	'pll_get_post_types',
+	function ( $post_types ) {
+		$post_types[ JCORE_MAAILMA_POST_TYPE ] = JCORE_MAAILMA_POST_TYPE;
+		return $post_types;
+	}
+);
