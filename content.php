@@ -30,7 +30,24 @@ function get_global_content( $name ) {
 
 	if ( $query->have_posts() ) {
 		foreach ( $query->posts as $post ) {
-			return $post->post_content;
+			return filter_content( $post->post_content );
 		}
 	}
+}
+
+/**
+ * Filters and formats post content.
+ *
+ * This function applies the 'the_content' filter to the provided content,
+ * and replaces occurrences of ']]>' with ']]&gt;'. This ensures that the
+ * content is processed in the same way as standard WordPress post content,
+ * including shortcode and embed handling.
+ *
+ * @param string $content The raw post content to filter.
+ * @return string The filtered and formatted post content.
+ */
+function filter_content( $content ) {
+	$content = apply_filters( 'the_content', $content );
+	$content = str_replace( ']]>', ']]&gt;', $content );
+	return $content;
 }

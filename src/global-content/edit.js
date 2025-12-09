@@ -15,53 +15,13 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'lohko')}>
-					<ToggleControl
-						checked={!!copyrightShow}
-						onChange={() => setAttributes({ copyrightShow: !copyrightShow })}
-						label={__('Show Copyright Section', 'lohko')}
-						help={__('Toggle to show or hide the copyright text.', 'lohko')}
-					/>
-					{copyrightShow && (
-						<>
-							<TextControl
-								label="Copyright Text"
-								value={copyrightText}
-								onChange={(newValue) => setAttributes({ copyrightText: newValue })}
-							/>
-							<TextControl
-								label={__('Copyright Year', 'lohko')}
-								value={copyrightYear}
-								type="number"
-								onChange={(newValue) => {
-									let value = parseInt(newValue);
-
-									setAttributes({
-										copyrightYear: value === NaN ? 0 : value,
-									});
-								}}
-							/>
-							<ToggleControl
-								checked={!!copyrightToCurrent}
-								onChange={() =>
-									setAttributes({
-										copyrightToCurrent: !copyrightToCurrent,
-									})
-								}
-								label={__('Add Current Year', 'lohko')}
-								help={__('Toggle to show current year.', 'lohko')}
-							/>
-						</>
-					)}
-				</PanelBody>
+				<PanelBody title={__('Settings', 'lohko')}></PanelBody>
 			</InspectorControls>
 
-			<div {...useBlockProps()}>
-				<ServerSideRender
-					block="jco/footer"
-					attributes={{ ...attributes, preview: true }}
-				/>
-			</div>
+			<ServerSideRender
+				block="jco/global-content"
+				attributes={{ ...attributes, preview: true }}
+			/>
 		</>
 	);
 }

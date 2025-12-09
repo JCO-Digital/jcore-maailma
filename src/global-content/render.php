@@ -13,5 +13,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $content = get_global_content( 'example' );
-
-echo $content;
+echo wp_kses_post( $content );
