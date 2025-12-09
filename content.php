@@ -37,8 +37,6 @@ function update_slug( $post_id, $post, $update ) {
 }
 add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3 );
 
-
-
 /**
  * Retrieves the content of a global content post by its name.
  *
