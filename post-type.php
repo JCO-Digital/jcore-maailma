@@ -50,7 +50,7 @@ add_action(
 				),
 				'public'           => false,
 				'show_ui'          => true,
-				'supports'         => array( 'title', 'slug', 'editor', 'custom-fields', 'show_in_rest' ),
+				'supports'         => array( 'title', 'editor', 'revisions', 'show_in_rest' ),
 				'show_in_rest'     => true,
 				'menu_icon'        => 'dashicons-admin-site-alt3',
 				'rewrite'          => false,

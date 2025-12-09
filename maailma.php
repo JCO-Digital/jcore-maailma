@@ -27,6 +27,7 @@ define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
 
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';
+require_once __DIR__ . '/timber.php';
 
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.

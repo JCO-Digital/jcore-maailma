@@ -12,5 +12,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$content = get_global_content( 'example' );
+$content = get_global_content( $attributes['selectedPostId'] );
 echo wp_kses_post( $content );
