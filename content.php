@@ -38,33 +38,42 @@ function update_slug( $post_id, $post, $update ) {
 add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3 );
 
 /**
- * Retrieves the content of a global content post by its name.
+ * Retrieves global content by ID or slug.
  *
- * This function queries for a post of type JCORE_MAAILMA_POST_TYPE with the specified
- * title ($name) and returns its post content. If no such post is found, it returns null.
+ * This function fetches the content of a 'jcore-global-content' post by its numeric ID or slug.
+ * If a slug is provided, it attempts to resolve it to a post ID. If Polylang is active and translation
+ * is enabled, it retrieves the translated post ID. The function then gets the post content and applies
+ * content filters before returning it.
  *
- * @param string|int $id The title of the global content post to retrieve.
- * @return string|null The post content if found, or null if not found.
+ * @param int|string $id        The post ID or slug of the global content.
+ * @param bool       $translate Whether to retrieve the translated version if available. Default true.
+ * @return string               The filtered post content, or an empty string if not found.
  */
-function get_global_content( $id ) {
-	if ( is_int( $id ) ) {
+function get_global_content( $id, $translate = true ) {
+	if ( empty( $id ) ) {
+		return '';
+	} elseif ( is_numeric( $id ) ) {
 		$post_id = $id;
 	} else {
-		$post = get_page_by_path( $id, OBJECT, JCORE_MAAILMA_POST_TYPE );
-		if ( ! $post ) {
-			return null;
+		$content_post = get_page_by_path( $id, OBJECT, JCORE_MAAILMA_POST_TYPE );
+		if ( ! $content_post ) {
+			return '';
 		}
-		$post_id = $post->ID;
+		$post_id = $content_post->ID;
 	}
-	if ( function_exists( 'pll_get_post' ) ) {
-		$post_id = pll_get_post( $post_id );
+	if ( $translate && function_exists( 'pll_get_post' ) ) {
+		$pll_id = pll_get_post( $post_id );
+		if ( $pll_id ) {
+			$post_id = $pll_id;
+		}
 	}
-	$post = get_post( $post_id );
-	if ( ! $post ) {
-		return null;
+	if ( empty( $post_id ) ) {
+		return '';
 	}
 
-	return filter_content( $post->post_content );
+	$content = get_the_content( null, false, $post_id );
+
+	return filter_content( $content );
 }
 
 /**

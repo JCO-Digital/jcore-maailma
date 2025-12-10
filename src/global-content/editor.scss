@@ -5,4 +5,21 @@
  */
 
 .wp-block-jco-global-content {
+	position: relative;
+	border: 1px solid #888;
+	border-radius: 0 4px 4px 4px;
+
+	&::before {
+		background-color: #888;
+		color: #fff;
+		position: absolute;
+		height: 13px;
+		top: -13px;
+		left: -1px;
+		font-size: 10px;
+		padding: 0 8px;
+		border-radius: 4px 4px 0 0;
+		content: "Global Content";
+		margin-bottom: 8px;
+	}
 }

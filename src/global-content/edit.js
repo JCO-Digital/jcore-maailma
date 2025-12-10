@@ -12,8 +12,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { selectedPostId, copyrightShow, copyrightText, copyrightYear, copyrightToCurrent } =
-		attributes;
+	const { selectedPostId } = attributes;
 
 	// Fetch posts of type 'jcore-global-content'
 	const posts = useSelect(

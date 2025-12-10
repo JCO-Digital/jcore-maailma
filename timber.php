@@ -26,7 +26,7 @@ add_filter( 'timber/twig', 'Jcore\Maailma\twig' );
 function twig( $twig ) {
 	// Adding a function.
 	$twig->addFunction(
-		new \Twig\TwigFunction( 'global_content', 'Jcore\Maailma\get_global_content' )
+		new \Twig\TwigFunction( 'jcore_global_content', 'Jcore\Maailma\get_global_content' )
 	);
 
 	return $twig;
