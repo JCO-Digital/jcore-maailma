@@ -43,10 +43,10 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.MASTER_PAT }}
-          version-file: "./version.json"
-          fallback-version: 3.1.0
+          version-file: "./package.json"
+          fallback-version: 1.0.0
           git-push: false
-          pre-commit: "./versionsync.js"
+          pre-commit: "./versionSync.mjs"
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
