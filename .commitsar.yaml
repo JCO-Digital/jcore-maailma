@@ -1,4 +1,4 @@
-verbose: false
+verbose: true
 commits:
     strict: true
     limit: 1
