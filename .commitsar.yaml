@@ -1,6 +1,5 @@
-verbose: true
+verbose: false
 commits:
-    strict: false
-    limit: 100
-    all: true
-    upstreamBranch: origin/main
+    strict: true
+    limit: 1
+    all: false
