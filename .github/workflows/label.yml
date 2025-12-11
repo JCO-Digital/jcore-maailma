@@ -8,4 +8,4 @@ jobs:
   label:
     permissions:
       pull-requests: write
-    uses: jco-digital/jcore-module-actions/.github/workflows/label.yml@v1.0.0
+    uses: jco-digital/jcore-module-actions/.github/workflows/label.yml@v2
