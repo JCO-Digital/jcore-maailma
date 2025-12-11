@@ -1,5 +1,5 @@
 version: 1
 
 commits:
-  - limit: 1
-  - strict: false
+  limit: 1
+  strict: false
