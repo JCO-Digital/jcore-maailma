@@ -30,6 +30,18 @@ require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/timber.php';
 
 /**
+ * Let Jcore know we are loaded.
+ */
+add_filter(
+	'jcore_plugins_loaded',
+	function ( $plugins ) {
+		$plugins['jcore-maailma'] = __DIR__;
+		return $plugins;
+	}
+);
+
+
+/**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
  * Behind the scenes, it also registers all assets so they can be enqueued
  * through the block editor in the corresponding context.
