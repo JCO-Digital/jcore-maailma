@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.0...v1.1.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* **ci:** update pre-commit script path from versionSync.mjs to versionSync.js ([d103ee1](https://github.com/JCO-Digital/jcore-maailma/commit/d103ee1575572ca7144719e6ef577fa89e8e8426))
+
+
+
 # [1.1.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.0.0...v1.1.0) (2025-12-11)
 
 
