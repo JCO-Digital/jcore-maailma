@@ -48,7 +48,7 @@ jobs:
           version-file: "./package.json"
           fallback-version: 1.0.0
           git-push: false
-          pre-commit: "./versionSync.mjs"
+          pre-commit: "./versionSync.js"
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
