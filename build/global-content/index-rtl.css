@@ -1,0 +1,26 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../../node_modules/.pnpm/css-loader@6.11.0_webpack@5.103.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../../../node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.6_webpack@5.103.0/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../../../node_modules/.pnpm/sass-loader@16.0.6_sass@1.94.2_webpack@5.103.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/global-content/editor.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-jco-global-content {
+  position: relative;
+  border: 1px solid #888;
+  border-radius: 4px 0 4px 4px;
+}
+.wp-block-jco-global-content::before {
+  background-color: #888;
+  color: #fff;
+  position: absolute;
+  height: 13px;
+  top: -13px;
+  right: -1px;
+  font-size: 10px;
+  padding: 0 8px;
+  border-radius: 4px 4px 0 0;
+  content: "Global Content";
+  margin-bottom: 8px;
+}
