@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.1...v1.2.0) (2025-12-11)
+
+
+### Features
+
+* Add filter to let Ydin know we are loaded. ([03c928f](https://github.com/JCO-Digital/jcore-maailma/commit/03c928f0251b4f4c86f86624979ffad0bcdaf437))
+
+
+
 ## [1.1.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.0...v1.1.1) (2025-12-11)
 
 
