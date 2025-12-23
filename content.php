@@ -54,6 +54,9 @@ function get_global_content( $id, $translate = true ) {
 		return '';
 	} elseif ( is_numeric( $id ) ) {
 		$post_id = $id;
+		if ( get_post_type( $post_id ) !== JCORE_MAAILMA_POST_TYPE ) {
+			return '';
+		}
 	} else {
 		$content_post = get_page_by_path( $id, OBJECT, JCORE_MAAILMA_POST_TYPE );
 		if ( ! $content_post ) {
