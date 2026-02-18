@@ -73,22 +73,31 @@ function get_global_content( $id, $translate = true ) {
 
 	$content = get_the_content( null, false, $post_id );
 
-	return filter_content( $content );
+	return render_blocks( $content );
 }
 
 /**
- * Filters and formats post content.
+ * Renders block content.
  *
- * This function applies the 'the_content' filter to the provided content,
- * and replaces occurrences of ']]>' with ']]&gt;'. This ensures that the
- * content is processed in the same way as standard WordPress post content,
- * including shortcode and embed handling.
+ * This function takes a string containing block-encoded content, parses it into
+ * individual blocks, and renders each one into HTML.
  *
- * @param string $content The raw post content to filter.
- * @return string The filtered and formatted post content.
+ * @param string $content The block-encoded content to render.
+ * @return string         The rendered HTML content.
  */
-function filter_content( $content ) {
-	$content = apply_filters( 'the_content', $content );
-	$content = str_replace( ']]>', ']]&gt;', $content );
-	return $content;
+function render_blocks( $content ) {
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return '';
+	}
+
+	$block_content = '';
+	foreach ( $blocks as $block_item ) {
+		$rendered_block = render_block( $block_item );
+		if ( empty( $rendered_block ) ) {
+			continue;
+		}
+		$block_content .= $rendered_block;
+	}
+	return $block_content;
 }
