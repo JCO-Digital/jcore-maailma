@@ -71,8 +71,14 @@ add_filter(
 add_filter(
 	'manage_' . JCORE_MAAILMA_POST_TYPE . '_posts_columns',
 	function ( $columns ) {
-		$columns['slug'] = __( 'Slug', 'jcore' );
-		return $columns;
+		$new_columns = array();
+		foreach ( $columns as $key => $value ) {
+			$new_columns[ $key ] = $value;
+			if ( 'title' === $key ) {
+				$new_columns['slug'] = __( 'Slug', 'jcore' );
+			}
+		}
+		return $new_columns;
 	}
 );
 
