@@ -67,3 +67,30 @@ add_filter(
 		return $post_types;
 	}
 );
+
+add_filter(
+	'manage_' . JCORE_MAAILMA_POST_TYPE . '_posts_columns',
+	function ( $columns ) {
+		$columns['slug'] = __( 'Slug', 'jcore' );
+		return $columns;
+	}
+);
+
+add_action(
+	'manage_' . JCORE_MAAILMA_POST_TYPE . '_posts_custom_column',
+	function ( $column, $post_id ) {
+		if ( 'slug' === $column ) {
+			echo esc_html( get_post_field( 'post_name', $post_id ) );
+		}
+	},
+	10,
+	2
+);
+
+add_filter(
+	'manage_edit-' . JCORE_MAAILMA_POST_TYPE . '_sortable_columns',
+	function ( $sortable_columns ) {
+		$sortable_columns['slug'] = 'name';
+		return $sortable_columns;
+	}
+);
