@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * This function is hooked to the 'save_post_jcore-global-content' action and is triggered
  * whenever a post of type 'jcore-global-content' is saved. It sanitizes the post title to
- * generate a slug, assigns it to the post's 'post_name', and updates the post in the database.
+ * generate a unique slug and updates the post's 'post_name' in the database.
  *
  * @param int     $post_id The ID of the post being saved.
  * @param WP_Post $post    The post object.
@@ -26,12 +26,18 @@ function update_slug( $post_id, $post, $update ) {
 	if ( $update ) {
 		$new_slug = sanitize_title( $post->post_title );
 		if ( $new_slug !== $post->post_name ) {
-			wp_update_post(
-				array(
-					'ID'        => $post_id,
-					'post_name' => $new_slug,
-				)
-			);
+			$unique_slug = wp_unique_post_slug( $new_slug, $post_id, $post->post_status, $post->post_type, $post->post_parent );
+
+			if ( $unique_slug !== $post->post_name ) {
+				remove_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10 );
+				wp_update_post(
+					array(
+						'ID'        => $post_id,
+						'post_name' => $unique_slug,
+					)
+				);
+				add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3 );
+			}
 		}
 	}
 }
