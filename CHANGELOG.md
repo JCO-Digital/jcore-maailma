@@ -1,3 +1,19 @@
+# [1.3.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.2.0...v1.3.0) (2026-02-18)
+
+
+### Bug Fixes
+
+* **content:** generate unique slug and prevent recursive save when ([c984834](https://github.com/JCO-Digital/jcore-maailma/commit/c9848343dec6b938e26599d5b362f8802510aa0a))
+* **post-type:** insert slug column after title in admin posts list ([3c68806](https://github.com/JCO-Digital/jcore-maailma/commit/3c68806ecf7989ba5a50db46024fa94682a002ae))
+
+
+### Features
+
+* **post-type:** add Slug column to custom post list and make it ([cd7530d](https://github.com/JCO-Digital/jcore-maailma/commit/cd7530d1ce256c84a3e988e046f492dc31c5d5f9))
+* **post-type:** make slug copyable from post list with toast ([b67639a](https://github.com/JCO-Digital/jcore-maailma/commit/b67639a15eae8ca357c75d1a1a1da4a212221b57))
+
+
+
 # [1.2.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.1...v1.2.0) (2025-12-11)
 
 
