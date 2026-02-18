@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
 define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
 define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
