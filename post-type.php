@@ -86,7 +86,12 @@ add_action(
 	'manage_' . JCORE_MAAILMA_POST_TYPE . '_posts_custom_column',
 	function ( $column, $post_id ) {
 		if ( 'slug' === $column ) {
-			echo esc_html( get_post_field( 'post_name', $post_id ) );
+			$slug = get_post_field( 'post_name', $post_id );
+			printf(
+				'<code class="jcore-copy-slug" style="cursor: pointer;" title="%s">%s</code>',
+				esc_attr__( 'Click to copy', 'jcore' ),
+				esc_html( $slug )
+			);
 		}
 	},
 	10,
@@ -98,5 +103,55 @@ add_filter(
 	function ( $sortable_columns ) {
 		$sortable_columns['slug'] = 'name';
 		return $sortable_columns;
+	}
+);
+
+add_action(
+	'admin_footer',
+	function () {
+		$screen = get_current_screen();
+		if ( $screen && 'edit-' . JCORE_MAAILMA_POST_TYPE === $screen->id ) {
+			?>
+			<style>
+				#jcore-copy-toast {
+					position: fixed;
+					bottom: 20px;
+					right: 20px;
+					background: #32373c;
+					color: #fff;
+					padding: 10px 20px;
+					border-radius: 4px;
+					box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+					opacity: 0;
+					transition: opacity 0.3s ease;
+					z-index: 100000;
+					pointer-events: none;
+				}
+				#jcore-copy-toast.show {
+					opacity: 1;
+				}
+			</style>
+			<div id="jcore-copy-toast"><?php echo esc_html__( 'Slug copied to clipboard!', 'jcore' ); ?></div>
+			<script>
+				(function() {
+					const toast = document.getElementById('jcore-copy-toast');
+					let timeout;
+
+					document.querySelectorAll('.jcore-copy-slug').forEach(el => {
+						el.addEventListener('click', function() {
+							const text = this.innerText;
+							navigator.clipboard.writeText(text).then(() => {
+								toast.classList.add('show');
+								clearTimeout(timeout);
+								timeout = setTimeout(() => {
+									toast.classList.remove('show');
+								}, 2000);
+							});
+						});
+					});
+				})();
+			</script>
+			<?php
+		}
 	}
 );
