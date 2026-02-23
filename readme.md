@@ -100,6 +100,7 @@ The plugin defines the following constants that can be used in your code:
 - `JCORE_MAAILMA_BUILD_DIR`: Path to the build directory
 - `JCORE_MAAILMA_MANIFEST`: Path to the blocks manifest file
 - `JCORE_MAAILMA_POST_TYPE`: The post type slug (`jcore-global-content`)
+- `JCORE_MAAILMA_VERSION`: Current plugin version
 
 ## Hooks and Filters
 
