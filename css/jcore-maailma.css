@@ -1,0 +1,20 @@
+#jcore-copy-toast {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background: #32373c;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 100000;
+	pointer-events: none;
+}
+#jcore-copy-toast.show {
+	opacity: 1;
+}
+.jcore-copy-slug {
+	cursor: pointer;
+}

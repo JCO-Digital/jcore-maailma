@@ -29,14 +29,17 @@ function update_slug( $post_id, $post, $update ) {
 			$unique_slug = wp_unique_post_slug( $new_slug, $post_id, $post->post_status, $post->post_type, $post->post_parent );
 
 			if ( $unique_slug !== $post->post_name ) {
-				remove_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10 );
-				wp_update_post(
-					array(
-						'ID'        => $post_id,
-						'post_name' => $unique_slug,
-					)
-				);
-				add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3 );
+				try {
+					remove_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10 );
+					wp_update_post(
+						array(
+							'ID'        => $post_id,
+							'post_name' => $unique_slug,
+						)
+					);
+				} finally {
+					add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3 );
+				}
 			}
 		}
 	}
