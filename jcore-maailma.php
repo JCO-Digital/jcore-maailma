@@ -45,6 +45,13 @@ add_filter(
 add_action(
 	'admin_enqueue_scripts',
 	function () {
+		$screen = get_current_screen();
+
+		// Only load assets on the edit screen for the Jcore Global Content post type.
+		if ( ! $screen || 'edit-' . JCORE_MAAILMA_POST_TYPE !== $screen->id ) {
+			return;
+		}
+
 		wp_enqueue_style( 'jcore-maailma', plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'css/jcore-maailma.css', array(), JCORE_MAAILMA_VERSION );
 		wp_enqueue_script( 'jcore-maailma', plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'js/jcore-maailma.js', array(), JCORE_MAAILMA_VERSION, true );
 	}
