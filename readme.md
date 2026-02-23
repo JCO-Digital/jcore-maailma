@@ -84,20 +84,6 @@ The plugin provides a custom Twig function for use in Timber templates:
 {{ jcore_global_content('footer-disclaimer', false) }}
 ```
 
-### Using the Filter Content Function
-
-If you need to apply WordPress content filters to custom content:
-
-```php
-<?php
-use function Jcore\Maailma\filter_content;
-
-$content = 'Your raw content here';
-$filtered = filter_content( $content );
-echo $filtered;
-?>
-```
-
 ## Polylang Integration
 
 If you have Polylang installed, JCORE Maailma automatically:
@@ -110,6 +96,7 @@ If you have Polylang installed, JCORE Maailma automatically:
 
 The plugin defines the following constants that can be used in your code:
 
+- `JCORE_MAAILMA_PLUGIN_FILE`: Path to the plugin file
 - `JCORE_MAAILMA_BUILD_DIR`: Path to the build directory
 - `JCORE_MAAILMA_MANIFEST`: Path to the blocks manifest file
 - `JCORE_MAAILMA_POST_TYPE`: The post type slug (`jcore-global-content`)
