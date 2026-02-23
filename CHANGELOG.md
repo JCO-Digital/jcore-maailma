@@ -1,3 +1,14 @@
+## [1.3.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.0...v1.3.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* **admin:** load assets only on the post type list screen ([3509d29](https://github.com/JCO-Digital/jcore-maailma/commit/3509d294adf86e094e09f3685066e2470d06f597))
+* **maailma:** add toast check and handle clipboard write errors ([a9d1b30](https://github.com/JCO-Digital/jcore-maailma/commit/a9d1b308a95528cd39560d16a859f69f5e609d9a))
+* **slug:** ensure save_post hook is restored in update_slug ([484135e](https://github.com/JCO-Digital/jcore-maailma/commit/484135e77e6c49790461bfda0fd0106936ac9763))
+
+
+
 # [1.3.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.2.0...v1.3.0) (2026-02-18)
 
 
@@ -45,17 +56,6 @@
 ### Features
 
 * added composer.json and other versioning stuff + some renaming and cleanup ([ffd2968](https://github.com/JCO-Digital/jcore-maailma/commit/ffd296892c1057e82f45af723f0b8c129e0b93e4))
-
-
-
-# [1.0.0](https://github.com/JCO-Digital/jcore-maailma/compare/5fc99b55830357362b5c31a55e115a1d6211bcb2...v1.0.0) (2025-12-09)
-
-
-### Features
-
-* Add global content post selection to block editor ([7534e7a](https://github.com/JCO-Digital/jcore-maailma/commit/7534e7a5c3927aa47d2135fb5fb63d08a569a28a))
-* Add global content post type and helper function ([5fc99b5](https://github.com/JCO-Digital/jcore-maailma/commit/5fc99b55830357362b5c31a55e115a1d6211bcb2))
-* Add Polylang support for global content post type ([fecf6da](https://github.com/JCO-Digital/jcore-maailma/commit/fecf6daaa86903f99fd0b6994745690207a0ebb9))
 
 
 
