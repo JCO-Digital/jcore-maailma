@@ -15,3 +15,6 @@
 #jcore-copy-toast.show {
 	opacity: 1;
 }
+.jcore-copy-slug {
+	cursor: pointer;
+}

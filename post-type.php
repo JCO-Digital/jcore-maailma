@@ -88,7 +88,7 @@ add_action(
 		if ( 'slug' === $column ) {
 			$slug = get_post_field( 'post_name', $post_id );
 			printf(
-				'<button class="jcore-copy-slug" style="cursor: pointer;" title="%s">%s</button>',
+				'<button type="button" class="jcore-copy-slug" title="%s">%s</button>',
 				esc_attr__( 'Click to copy', 'jcore' ),
 				esc_html( $slug )
 			);
