@@ -7,7 +7,7 @@
 	document.querySelectorAll(".jcore-copy-slug").forEach((el) => {
 		el.addEventListener("click", function (event) {
 			event.preventDefault();
-			const text = this.innerContent;
+			const text = this.textContent;
 			navigator.clipboard
 				.writeText(text)
 				.then(() => {
