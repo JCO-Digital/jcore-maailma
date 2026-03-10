@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.1...v1.4.0) (2026-03-09)
+
+
+### Bug Fixes
+
+* use textContent instead of innerContent for clipboard copy ([83f7693](https://github.com/JCO-Digital/jcore-maailma/commit/83f7693a859469d224acb338b785a701720f7b6f))
+
+
+### Features
+
+* **global-content:** replace SelectControl with ComboboxControl ([e7eacc1](https://github.com/JCO-Digital/jcore-maailma/commit/e7eacc1bb595222acaeb991eaf5ca9839a40f7bd))
+
+
+
 ## [1.3.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.0...v1.3.1) (2026-02-23)
 
 
@@ -40,22 +54,6 @@
 ### Bug Fixes
 
 * **ci:** update pre-commit script path from versionSync.mjs to versionSync.js ([d103ee1](https://github.com/JCO-Digital/jcore-maailma/commit/d103ee1575572ca7144719e6ef577fa89e8e8426))
-
-
-
-# [1.1.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.0.0...v1.1.0) (2025-12-11)
-
-
-### Bug Fixes
-
-* **ci:** add pnpm action setup to workflow ([8d1e619](https://github.com/JCO-Digital/jcore-maailma/commit/8d1e619ce37792e0f3ed900d287183e736899893))
-* **ci:** rename the commitsar file with yml ([6cd51cd](https://github.com/JCO-Digital/jcore-maailma/commit/6cd51cd062d694b2c24e9ee8b4cb8d96e3476045))
-* do not check all commits but be strict ([6c0d7cd](https://github.com/JCO-Digital/jcore-maailma/commit/6c0d7cda638fb5a4c060d399ba91504757cdb62c))
-
-
-### Features
-
-* added composer.json and other versioning stuff + some renaming and cleanup ([ffd2968](https://github.com/JCO-Digital/jcore-maailma/commit/ffd296892c1057e82f45af723f0b8c129e0b93e4))
 
 
 
