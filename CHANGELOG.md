@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.4.0...v1.4.1) (2026-03-10)
+
+
+### Bug Fixes
+
+* **global-content:** use default import for ServerSideRender ([146c68c](https://github.com/JCO-Digital/jcore-maailma/commit/146c68c6c4b4d28f3a7ba5310dd8120463a37952))
+
+
+
 # [1.4.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.1...v1.4.0) (2026-03-09)
 
 
@@ -45,15 +54,6 @@
 ### Features
 
 * Add filter to let Ydin know we are loaded. ([03c928f](https://github.com/JCO-Digital/jcore-maailma/commit/03c928f0251b4f4c86f86624979ffad0bcdaf437))
-
-
-
-## [1.1.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.0...v1.1.1) (2025-12-11)
-
-
-### Bug Fixes
-
-* **ci:** update pre-commit script path from versionSync.mjs to versionSync.js ([d103ee1](https://github.com/JCO-Digital/jcore-maailma/commit/d103ee1575572ca7144719e6ef577fa89e8e8426))
 
 
 
