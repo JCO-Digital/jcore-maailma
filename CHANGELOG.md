@@ -1,15 +1,20 @@
 # Changelog
 
-### 1.4.2 (2026-05-11)
+### 1.4.3 (2026-05-11)
+
+#### Maintenance
+
+- blocks: build blocks for release [skip ci] (08bbc2f)
+
+### Misc
+- v1.4.2 (0db0879)
+
+### v1.4.2 (2026-05-11)
 
 #### Continuous Integration
 
 - github: replace add-and-commit action with push-protected (7f8c13c)
 - workflow: migrate to foonver for releases and update CI configuration (2406c54)
-
-#### Maintenance
-
-- blocks: build blocks for release [skip ci] (08bbc2f)
 
 ### v1.4.1 (2026-03-10)
 
