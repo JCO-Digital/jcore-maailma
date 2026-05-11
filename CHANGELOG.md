@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.4.3 (2026-05-11)
+### 1.4.4 (2026-05-11)
+
+#### Continuous Integration
+
+- github: enable direct push for version bumping (f1149fa)
+
+### v1.4.3 (2026-05-11)
 
 #### Continuous Integration
 
