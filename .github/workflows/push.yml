@@ -41,6 +41,7 @@ jobs:
           changelog: "true"
           push: "false"
           commit_suffix: "[skip ci]"
+          version_sync: "jcore-maailma.php"
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
