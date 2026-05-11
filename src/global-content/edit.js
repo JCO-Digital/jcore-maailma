@@ -3,7 +3,7 @@ import { decodeEntities } from "@wordpress/html-entities";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 import { PanelBody, ComboboxControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
-import { ServerSideRender } from "@wordpress/server-side-render";
+import ServerSideRender from "@wordpress/server-side-render";
 import "./editor.scss";
 
 /**

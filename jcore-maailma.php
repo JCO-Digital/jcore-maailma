@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       JCORE Maailma
  * Description:       A global content post type and block.
- * Version:           1.4.0
+ * Version:           1.4.1
  * Requires at least: 6.7
  * Requires PHP:      8.2
  * Author:            J&Co Digital
@@ -25,7 +25,7 @@ define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
 define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
 define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
-define( 'JCORE_MAAILMA_VERSION', '1.4.0' );
+define( 'JCORE_MAAILMA_VERSION', '1.4.1' );
 
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';
