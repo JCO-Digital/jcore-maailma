@@ -25,7 +25,7 @@ define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
 define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
 define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
-define( 'JCORE_MAAILMA_VERSION', '1.4.1' );
+define( 'JCORE_MAAILMA_VERSION', '1.4.2' );
 
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';

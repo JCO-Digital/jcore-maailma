@@ -1,59 +1,13 @@
 # Changelog
 
-### v1.4.25 (2026-05-11)
-
-### v1.4.24 (2026-05-11)
-
-### v1.4.23 (2026-05-11)
-
-### v1.4.22 (2026-05-11)
-
-### v1.4.21 (2026-05-11)
-
-### v1.4.20 (2026-05-11)
-
-### v1.4.19 (2026-05-11)
-
-### v1.4.18 (2026-05-11)
-
-### v1.4.17 (2026-05-11)
-
-### v1.4.16 (2026-05-11)
-
-### v1.4.15 (2026-05-11)
-
-### v1.4.14 (2026-05-11)
-
-### v1.4.13 (2026-05-11)
-
-### v1.4.12 (2026-05-11)
-
-### v1.4.11 (2026-05-11)
-
-### v1.4.10 (2026-05-11)
-
-### v1.4.9 (2026-05-11)
-
-### v1.4.8 (2026-05-11)
-
-### v1.4.7 (2026-05-11)
-
-### v1.4.6 (2026-05-11)
-
-### v1.4.5 (2026-05-11)
-
-### v1.4.4 (2026-05-11)
-
-### v1.4.3 (2026-05-11)
-
-#### Maintenance
-
-- blocks: build blocks for release [skip ci] (08bbc2f)
-
-### v1.4.2 (2026-05-11)
+### 1.4.2 (2026-05-11)
 
 #### Continuous Integration
 
+- github: update foonver version and add protected branch push step (fb04c95)
+- github: update release workflow configuration and downgrade version (2e29ddc)
+- github: update branch trigger and foonver action version (f29d65b)
+- github: enable auto-push and remove redundant push step (23649a1)
 - github: replace add-and-commit action with push-protected (7f8c13c)
 - workflow: migrate to foonver for releases and update CI configuration (2406c54)
 
@@ -62,11 +16,6 @@
 #### Bug Fixes
 
 - global-content: use default import for ServerSideRender (146c68c)
-
-#### Maintenance
-
-- release: v1.4.1 [skip ci] (f6326d1)
-- blocks: build blocks for release [skip ci] (0f24c16)
 
 ## v1.4.0 (2026-03-09)
 
@@ -77,11 +26,6 @@
 #### Bug Fixes
 
 - use textContent instead of innerContent for clipboard copy (83f7693)
-
-#### Maintenance
-
-- release: v1.4.0 [skip ci] (db9d7a0)
-- blocks: build blocks for release [skip ci] (4f5a66c)
 
 ### v1.3.1 (2026-02-23)
 
@@ -103,7 +47,6 @@
 
 #### Maintenance
 
-- release: v1.3.1 [skip ci] (7d7262a)
 - remove version and postversion scripts (bb955cf)
 - versionSync: update version constant and refactor script (cc86403)
 
@@ -134,7 +77,6 @@
 
 #### Maintenance
 
-- release: v1.3.0 [skip ci] (45f675f)
 - plugin: define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards (6111e8c)
 - plugin: define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards (4acaa35)
 
@@ -144,19 +86,11 @@
 
 - Add filter to let Ydin know we are loaded. (03c928f)
 
-#### Maintenance
-
-- release: v1.2.0 [skip ci] (720c84e)
-
 ### v1.1.1 (2025-12-11)
 
 #### Bug Fixes
 
 - ci: update pre-commit script path from versionSync.mjs to versionSync.js (d103ee1)
-
-#### Maintenance
-
-- release: v1.1.1 [skip ci] (bc7bdde)
 
 ## v1.1.0 (2025-12-11)
 
@@ -183,7 +117,6 @@
 
 #### Maintenance
 
-- release: v1.1.0 [skip ci] (220cf89)
 - ci: just configure the action to not use commitsar for now (a4cdb7e)
 - ci: use v2.0.2 of the action (8e572e0)
 
