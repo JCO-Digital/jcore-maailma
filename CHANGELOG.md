@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.4.2 (2026-05-11)
+### 1.4.3 (2026-05-11)
+
+#### Continuous Integration
+
+- github: sync version from jcore-maailma.php during release (8e7001f)
+
+### v1.4.2 (2026-05-11)
 
 #### Continuous Integration
 
