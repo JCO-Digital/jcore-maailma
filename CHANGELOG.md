@@ -1,59 +1,174 @@
-## [1.4.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.4.0...v1.4.1) (2026-03-10)
+# Changelog
 
+### 1.4.2 (2026-05-11)
 
-### Bug Fixes
+#### Continuous Integration
 
-* **global-content:** use default import for ServerSideRender ([146c68c](https://github.com/JCO-Digital/jcore-maailma/commit/146c68c6c4b4d28f3a7ba5310dd8120463a37952))
+- github: replace add-and-commit action with push-protected (7f8c13c)
+- workflow: migrate to foonver for releases and update CI configuration (2406c54)
 
+#### Maintenance
 
+- blocks: build blocks for release [skip ci] (08bbc2f)
 
-# [1.4.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.1...v1.4.0) (2026-03-09)
+### v1.4.1 (2026-03-10)
 
+#### Bug Fixes
 
-### Bug Fixes
+- global-content: use default import for ServerSideRender (146c68c)
 
-* use textContent instead of innerContent for clipboard copy ([83f7693](https://github.com/JCO-Digital/jcore-maailma/commit/83f7693a859469d224acb338b785a701720f7b6f))
+#### Maintenance
 
+- release: v1.4.1 [skip ci] (f6326d1)
+- blocks: build blocks for release [skip ci] (0f24c16)
 
-### Features
+## v1.4.0 (2026-03-09)
 
-* **global-content:** replace SelectControl with ComboboxControl ([e7eacc1](https://github.com/JCO-Digital/jcore-maailma/commit/e7eacc1bb595222acaeb991eaf5ca9839a40f7bd))
+#### Features
 
+- global-content: replace SelectControl with ComboboxControl (e7eacc1)
 
+#### Bug Fixes
 
-## [1.3.1](https://github.com/JCO-Digital/jcore-maailma/compare/v1.3.0...v1.3.1) (2026-02-23)
+- use textContent instead of innerContent for clipboard copy (83f7693)
 
+#### Maintenance
 
-### Bug Fixes
+- release: v1.4.0 [skip ci] (db9d7a0)
+- blocks: build blocks for release [skip ci] (4f5a66c)
 
-* **admin:** load assets only on the post type list screen ([3509d29](https://github.com/JCO-Digital/jcore-maailma/commit/3509d294adf86e094e09f3685066e2470d06f597))
-* **maailma:** add toast check and handle clipboard write errors ([a9d1b30](https://github.com/JCO-Digital/jcore-maailma/commit/a9d1b308a95528cd39560d16a859f69f5e609d9a))
-* **slug:** ensure save_post hook is restored in update_slug ([484135e](https://github.com/JCO-Digital/jcore-maailma/commit/484135e77e6c49790461bfda0fd0106936ac9763))
+### v1.3.1 (2026-02-23)
 
+#### Bug Fixes
 
+- admin: load assets only on the post type list screen (3509d29)
+- maailma: add toast check and handle clipboard write errors (a9d1b30)
+- slug: ensure save_post hook is restored in update_slug (484135e)
 
-# [1.3.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.2.0...v1.3.0) (2026-02-18)
+#### Refactor
 
+- slug: move cursor style to CSS and add button type (5d8e03a)
+- admin: externalize copy-slug styles and scripts (f272716)
 
-### Bug Fixes
+#### Documentation
 
-* **content:** generate unique slug and prevent recursive save when ([c984834](https://github.com/JCO-Digital/jcore-maailma/commit/c9848343dec6b938e26599d5b362f8802510aa0a))
-* **post-type:** insert slug column after title in admin posts list ([3c68806](https://github.com/JCO-Digital/jcore-maailma/commit/3c68806ecf7989ba5a50db46024fa94682a002ae))
+- readme: document JCORE_MAAILMA_VERSION constant (80aefaa)
+- readme: update constants and remove filter_content function documentation (d89cd27)
 
+#### Maintenance
 
-### Features
+- release: v1.3.1 [skip ci] (7d7262a)
+- remove version and postversion scripts (bb955cf)
+- versionSync: update version constant and refactor script (cc86403)
 
-* **post-type:** add Slug column to custom post list and make it ([cd7530d](https://github.com/JCO-Digital/jcore-maailma/commit/cd7530d1ce256c84a3e988e046f492dc31c5d5f9))
-* **post-type:** make slug copyable from post list with toast ([b67639a](https://github.com/JCO-Digital/jcore-maailma/commit/b67639a15eae8ca357c75d1a1a1da4a212221b57))
+## v1.3.0 (2026-02-18)
 
+#### Features
 
+- post-type: make slug copyable from post list with toast notification (b67639a)
+- post-type: add Slug column to custom post list and make it sortable (cd7530d)
 
-# [1.2.0](https://github.com/JCO-Digital/jcore-maailma/compare/v1.1.1...v1.2.0) (2025-12-11)
+#### Bug Fixes
 
+- post-type: insert slug column after title in admin posts list (3c68806)
+- content: generate unique slug and prevent recursive save when updating post_name (c984834)
 
-### Features
+#### Refactor
 
-* Add filter to let Ydin know we are loaded. ([03c928f](https://github.com/JCO-Digital/jcore-maailma/commit/03c928f0251b4f4c86f86624979ffad0bcdaf437))
+- content: replace filter_content with render_blocks to render block content (d851bbc)
+- content: replace filter_content with render_blocks to render block content (af771a3)
 
+#### Documentation
 
+- updated readme file. (46fbce6)
+
+#### Build System
+
+- makefile: add start and stop targets (96939af)
+
+#### Maintenance
+
+- release: v1.3.0 [skip ci] (45f675f)
+- plugin: define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards (6111e8c)
+- plugin: define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards (4acaa35)
+
+## v1.2.0 (2025-12-11)
+
+#### Features
+
+- Add filter to let Ydin know we are loaded. (03c928f)
+
+#### Maintenance
+
+- release: v1.2.0 [skip ci] (720c84e)
+
+### v1.1.1 (2025-12-11)
+
+#### Bug Fixes
+
+- ci: update pre-commit script path from versionSync.mjs to versionSync.js (d103ee1)
+
+#### Maintenance
+
+- release: v1.1.1 [skip ci] (bc7bdde)
+
+## v1.1.0 (2025-12-11)
+
+#### Features
+
+- added composer.json and other versioning stuff + some renaming and cleanup (ffd2968)
+
+#### Bug Fixes
+
+- ci: add pnpm action setup to workflow (8d1e619)
+- ci: rename the commitsar file with yml (6cd51cd)
+- do not check all commits but be strict (6c0d7cd)
+
+#### Continuous Integration
+
+- Add Commitsar config and PR validation workflow (5ce9ef7)
+- remove commitsar (7cb0d83)
+- Fix YAML indentation in .commitsar.yml (fdfde45)
+- Set commitsar strict mode to false (978d463)
+- Update workflow actions to use v2 of jcore-module-actions (eea0d1d)
+- Add build output for Global Content block (3856e5a)
+- Add Commitsar config and update changelog action settings (eb8c092)
+- Add GitHub Actions workflows for PR labeling, validation, and release (1e85a52)
+
+#### Maintenance
+
+- release: v1.1.0 [skip ci] (220cf89)
+- ci: just configure the action to not use commitsar for now (a4cdb7e)
+- ci: use v2.0.2 of the action (8e572e0)
+
+### Misc
+- Update .github/workflows/label.yml (2151dbd)
+- Refactor global content retrieval and add editor block styling (91058a7)
+
+## v1.0.0 (2025-12-09)
+
+#### Features
+
+- Add Polylang support for global content post type (fecf6da)
+- Add global content post selection to block editor (7534e7a)
+- Add global content post type and helper function (5fc99b5)
+
+#### Refactor
+
+- global content block and improve content filtering (34715a0)
+
+#### Documentation
+
+- Updated readme (abe1826)
+
+#### Styles
+
+- Remove extra blank lines after add_action call (c8e6ad7)
+
+#### Maintenance
+
+- Rename plugin to JCORE Maailma and update namespaces and paths (bce232d)
+
+### Misc
+- Initial commit (b1e1ca6)
 
