@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.4.4 (2026-05-11)
+## 1.5.0 (2026-05-11)
+
+#### Features
+
+- update: implement automated remote update mechanism (056a340)
+
+### v1.4.4 (2026-05-11)
 
 #### Continuous Integration
 
