@@ -14,6 +14,10 @@ install:
 build:
 	pnpm build
 
+release:
+	mkdir -p release
+	zip release/jcore-maailma.zip -r * -x @zip_exclude.txt
+
 watch:
 	pnpm run watch
 
@@ -26,3 +30,4 @@ stop:
 clean:
 	rm -rf node_modules
 	rm -rf build
+	rm *.zip
