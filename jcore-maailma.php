@@ -25,11 +25,12 @@ define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
 define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
 define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
-define( 'JCORE_MAAILMA_VERSION', '1.4.2' );
+define( 'JCORE_MAAILMA_VERSION', get_file_data( JCORE_MAAILMA_PLUGIN_FILE, array( 'Version' => 'Version' ) )['Version'] );
 
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/timber.php';
+require_once __DIR__ . '/update.php';
 
 /**
  * Let Jcore know we are loaded.
