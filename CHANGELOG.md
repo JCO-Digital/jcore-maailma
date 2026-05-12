@@ -1,6 +1,20 @@
 # Changelog
 
-### 1.5.2 (2026-05-12)
+### 1.5.3 (2026-05-12)
+
+#### Bug Fixes
+
+- update: improve plugin update logic and caching (97aaff8)
+
+#### Build System
+
+- composer: add vendor to ignore and lock dependencies (a1ff9cc)
+
+#### Maintenance
+
+- phpcs: exclude build directory from analysis (42e3ac3)
+
+### v1.5.2 (2026-05-12)
 
 #### Bug Fixes
 
