@@ -18,14 +18,16 @@
 namespace Jcore\Maailma;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit(); // Exit if accessed directly.
 }
 
 define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
 define( 'JCORE_MAAILMA_BUILD_DIR', __DIR__ . '/build' );
-define( 'JCORE_MAAILMA_MANIFEST', JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php' );
+define(
+	'JCORE_MAAILMA_MANIFEST',
+	JCORE_MAAILMA_BUILD_DIR . '/blocks-manifest.php',
+);
 define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
-define( 'JCORE_MAAILMA_VERSION', get_file_data( JCORE_MAAILMA_PLUGIN_FILE, array( 'Version' => 'Version' ) )['Version'] );
 
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';
@@ -53,8 +55,21 @@ add_action(
 			return;
 		}
 
-		wp_enqueue_style( 'jcore-maailma', plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'css/jcore-maailma.css', array(), JCORE_MAAILMA_VERSION );
-		wp_enqueue_script( 'jcore-maailma', plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'js/jcore-maailma.js', array(), JCORE_MAAILMA_VERSION, true );
+		$plugin_data = get_data();
+
+		wp_enqueue_style(
+			'jcore-maailma',
+			plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'css/jcore-maailma.css',
+			array(),
+			$plugin_data['version'],
+		);
+		wp_enqueue_script(
+			'jcore-maailma',
+			plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'js/jcore-maailma.js',
+			array(),
+			$plugin_data['version'],
+			true,
+		);
 	}
 );
 
@@ -67,7 +82,6 @@ add_action(
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 function block_init() {
-
 	// Check if build folder exists.
 	if ( ! file_exists( JCORE_MAAILMA_MANIFEST ) ) {
 		return;
@@ -81,7 +95,10 @@ function block_init() {
 	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
 	 */
 	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( JCORE_MAAILMA_BUILD_DIR, JCORE_MAAILMA_MANIFEST );
+		wp_register_block_types_from_metadata_collection(
+			JCORE_MAAILMA_BUILD_DIR,
+			JCORE_MAAILMA_MANIFEST,
+		);
 		return;
 	}
 
@@ -92,7 +109,10 @@ function block_init() {
 	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
 	 */
 	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( JCORE_MAAILMA_BUILD_DIR, JCORE_MAAILMA_MANIFEST );
+		wp_register_block_metadata_collection(
+			JCORE_MAAILMA_BUILD_DIR,
+			JCORE_MAAILMA_MANIFEST,
+		);
 	}
 	/**
 	 * Registers the block type(s) in the `blocks-manifest.php` file.
@@ -104,7 +124,7 @@ function block_init() {
 		register_block_type( __DIR__ . "/build/{$block_type}" );
 	}
 }
-add_action( 'init', '\Jcore\Maailma\block_init' );
+add_action( 'init', "\Jcore\Maailma\block_init" );
 
 /**
  * Set the script translations.
@@ -136,8 +156,16 @@ function set_script_translations() {
 
 		// Replace slashes with dashes in the block name for the script handle.
 		$script_handle = str_replace( '/', '-', $name );
-		wp_set_script_translations( $script_handle . '-view-script', $textdomain, plugin_dir_path( __FILE__ ) . 'languages' );
-		wp_set_script_translations( $script_handle . '-editor-script', $textdomain, plugin_dir_path( __FILE__ ) . 'languages' );
+		wp_set_script_translations(
+			$script_handle . '-view-script',
+			$textdomain,
+			plugin_dir_path( __FILE__ ) . 'languages',
+		);
+		wp_set_script_translations(
+			$script_handle . '-editor-script',
+			$textdomain,
+			plugin_dir_path( __FILE__ ) . 'languages',
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'Jcore\Maailma\set_script_translations' );

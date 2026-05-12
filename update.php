@@ -8,70 +8,15 @@
 namespace Jcore\Maailma;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit(); // Exit if accessed directly.
 }
 
-add_filter( 'plugins_api', '\Jcore\Maailma\info', 20, 3 );
-add_filter( 'site_transient_update_plugins', '\Jcore\Maailma\update' );
-add_action( 'upgrader_process_complete', '\Jcore\Maailma\cleanup', 10, 2 );
+define(
+	'JCORE_MAAILMA_RELEASE',
+	'https://github.com/JCO-Digital/jcore-maailma/releases/latest/download',
+);
 
-/**
- * Provide plugin information for the update modal.
- *
- * @param \stdClass|bool $res    The response object.
- * @param string         $action The action being performed.
- * @param object         $args   The arguments for the action.
- *
- * @return \stdClass|bool
- */
-function info( $res, $action, $args ) {
-
-	// do nothing if you're not getting plugin information right now
-	if ( 'plugin_information' !== $action ) {
-		return $res;
-	}
-
-	// do nothing if it is not our plugin
-	if ( plugin_basename( __DIR__ ) !== $args->slug ) {
-		return $res;
-	}
-
-	// get updates
-	$remote = fetch();
-
-	if ( ! $remote ) {
-		return $res;
-	}
-
-	$res = new \stdClass();
-
-	$res->name           = $remote->name ?? 'JCORE Maailma';
-	$res->slug           = $remote->slug ?? 'jcore-maailma';
-	$res->version        = $remote->version;
-	$res->tested         = $remote->tested ?? '6.7';
-	$res->requires       = $remote->requires ?? '6.7';
-	$res->author         = $remote->author ?? 'J&Co Digital';
-	$res->author_profile = $remote->author_profile ?? 'https://jco.fi';
-	$res->download_link  = $remote->download_url;
-	$res->trunk          = $remote->download_url;
-	$res->requires_php   = $remote->requires_php ?? '8.2';
-	$res->last_updated   = $remote->last_updated ?? date( 'Y-m-d H:i:s' );
-
-	$res->sections = array(
-		'description'  => $remote->sections->description ?? ( $remote->description ?? '' ),
-		'installation' => $remote->sections->installation ?? 'Automatic update via WordPress dashboard.',
-		'changelog'    => $remote->sections->changelog ?? 'Updates and improvements.',
-	);
-
-	if ( ! empty( $remote->banners ) ) {
-		$res->banners = array(
-			'low'  => $remote->banners->low ?? '',
-			'high' => $remote->banners->high ?? '',
-		);
-	}
-
-	return $res;
-}
+add_filter( 'pre_set_site_transient_update_plugins', "\Jcore\Maailma\update" );
 
 /**
  * Check for updates and add them to the transient.
@@ -85,24 +30,65 @@ function update( $transient ) {
 		return $transient;
 	}
 
-	$remote = fetch();
+	$update      = create_plugin_object();
+	$plugin_data = get_data();
 
 	if (
-		$remote
-		&& isset( $remote->version )
-		&& version_compare( JCORE_MAAILMA_VERSION, $remote->version, '<' )
+		isset( $update->new_version ) &&
+		version_compare( $plugin_data['Version'], $update->new_version, '<' )
 	) {
-		$res = new \stdClass();
-		$res->slug        = $remote->slug ?? 'jcore-maailma';
-		$res->plugin      = plugin_basename( JCORE_MAAILMA_PLUGIN_FILE );
-		$res->new_version = $remote->version;
-		$res->tested      = $remote->tested ?? '6.7';
-		$res->package     = $remote->download_url;
-
-		$transient->response[ $res->plugin ] = $res;
+		$transient->response[ $plugin_data['plugin'] ] = $update;
+	} else {
+		$transient->no_update[ $plugin_data['plugin'] ] = $update;
 	}
 
 	return $transient;
+}
+
+function create_plugin_object(): \stdClass {
+	$plugin_data = get_data();
+
+	$remote = fetch();
+
+	if ( ! $remote ) {
+		return (object) array();
+	}
+
+	$item = (object) array(
+		'id'            => $plugin_data['id'],
+		'slug'          => $plugin_data['slug'],
+		'plugin'        => $plugin_data['plugin'],
+		'new_version'   => $remote->version,
+		'url'           => $remote->download_url ?? '',
+		'package'       => '',
+		'icons'         => array(),
+		'banners'       => array(),
+		'banners_rtl'   => array(),
+		'tested'        => '',
+		'requires_php'  => '',
+		'compatibility' => new \stdClass(),
+	);
+	return $item;
+}
+
+function get_data(): array {
+	static $data = array();
+
+	if ( ! empty( $plugin_data ) ) {
+		return $data;
+	}
+
+	$map = array(
+		'name'    => 'Plugin Name',
+		'version' => 'Version',
+	);
+
+	$data           = get_file_data( JCORE_MAAILMA_PLUGIN_FILE, $map );
+	$data['id']     = plugin_basename( JCORE_MAAILMA_PLUGIN_FILE );
+	$data['slug']   = basename( JCORE_MAAILMA_PLUGIN_FILE, '.php' );
+	$data['plugin'] = plugin_basename( JCORE_MAAILMA_PLUGIN_FILE );
+
+	return $data;
 }
 
 /**
@@ -111,25 +97,23 @@ function update( $transient ) {
  * @return \stdClass|bool
  */
 function fetch() {
-	$remote = get_transient( 'jcore_maailma_upgrade' );
-
-	if ( false !== $remote ) {
-		return $remote;
-	}
-
 	// Fetch package.json from the latest release asset
 	$response = wp_remote_get(
-		'https://github.com/JCO-Digital/jcore-maailma/releases/latest/download/package.json',
+		JCORE_MAAILMA_RELEASE . '/package.json',
 		array(
 			'timeout' => 10,
 			'headers' => array(
 				'Accept'     => 'application/json',
-				'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
+				'User-Agent' =>
+					'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
 			),
 		)
 	);
 
-	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+	if (
+		is_wp_error( $response ) ||
+		200 !== wp_remote_retrieve_response_code( $response )
+	) {
 		return false;
 	}
 
@@ -140,45 +124,7 @@ function fetch() {
 		return false;
 	}
 
-	// Standardize fields for info() and update()
-	if ( ! isset( $remote->slug ) ) {
-		$remote->slug = 'jcore-maailma';
-	}
-
-	if ( ! isset( $remote->download_url ) ) {
-		// Assuming the release asset is named jcore-maailma.zip
-		$remote->download_url = 'https://github.com/JCO-Digital/jcore-maailma/releases/latest/download/jcore-maailma.zip';
-	}
-
-	// Ensure sections exist for info()
-	if ( ! isset( $remote->sections ) ) {
-		$remote->sections = (object) array(
-			'description'  => $remote->description ?? '',
-			'installation' => 'Automatic update via WordPress dashboard.',
-			'changelog'    => 'Updates and improvements.',
-		);
-	}
-
-	set_transient( 'jcore_maailma_upgrade', $remote, DAY_IN_SECONDS );
+	$remote->download_url = JCORE_MAAILMA_RELEASE . '/' . $remote->name . 'zip';
 
 	return $remote;
-}
-
-
-/**
- * Cleanup after update.
- *
- * @param object $upgrader The upgrader object.
- * @param array  $options  The options array.
- *
- * @return void
- */
-function cleanup( $upgrader, $options ) {
-	if ( isset( $options['action'] ) && 'update' === $options['action'] && isset( $options['type'] ) && 'plugin' === $options['type'] && isset( $options['plugins'] ) ) {
-		foreach ( $options['plugins'] as $plugin ) {
-			if ( $plugin === plugin_basename( JCORE_MAAILMA_PLUGIN_FILE ) ) {
-				delete_transient( 'jcore_maailma_upgrade' );
-			}
-		}
-	}
 }

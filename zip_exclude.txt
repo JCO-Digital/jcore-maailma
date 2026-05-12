@@ -4,6 +4,8 @@ zip_exclude.txt
 .git/*
 .gitignore
 .github/*
+src/*
+release/*
 .*~
 node_modules/*
 composer.json
@@ -18,7 +20,6 @@ webpack.config.js
 wp-cli.local.yml
 tests
 vendor
-release/*
 node_modules
 *.sql
 *.tar.gz
