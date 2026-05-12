@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! defined( 'JCORE_MAAILMA_RELEASE' ) ) {
 	define(
-		'JCORE_MAAILMA_RELEASE',
+		'JCORE_MAAILMA_RELEASE_URL',
 		'https://github.com/JCO-Digital/jcore-maailma/releases/latest/download',
 	);
 }
@@ -116,7 +116,7 @@ function fetch() {
 	}
 
 	$response = wp_remote_get(
-		JCORE_MAAILMA_RELEASE . '/package.json',
+		JCORE_MAAILMA_RELEASE_URL . '/package.json',
 		array(
 			'timeout' => 10,
 			'headers' => array(
@@ -144,7 +144,7 @@ function fetch() {
 
 	if ( ! empty( $remote->name ) ) {
 		$remote->download_url =
-			JCORE_MAAILMA_RELEASE . '/' . $remote->name . '.zip';
+			JCORE_MAAILMA_RELEASE_URL . '/' . $remote->name . '.zip';
 	} else {
 		$remote->download_url = '';
 	}
