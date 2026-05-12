@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.5.1 (2026-05-12)
+### 1.5.2 (2026-05-12)
+
+#### Bug Fixes
+
+- plugin: correct case of version key in update logic (47dd17a)
+
+### v1.5.1 (2026-05-12)
 
 #### Refactor
 
