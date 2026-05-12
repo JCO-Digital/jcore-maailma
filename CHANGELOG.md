@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.5.0 (2026-05-11)
+### 1.5.1 (2026-05-12)
+
+#### Refactor
+
+- update: overhaul plugin update logic and cleanup configurations (02eec95)
+
+## v1.5.0 (2026-05-11)
 
 #### Features
 
