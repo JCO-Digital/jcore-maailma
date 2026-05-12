@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       JCORE Maailma
  * Description:       A global content post type and block.
- * Version:           1.5.3
+ * Version:           1.5.4
  * Requires at least: 6.7
  * Requires PHP:      8.2
  * Author:            J&Co Digital

@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.5.3 (2026-05-12)
+### 1.5.4 (2026-05-12)
+
+#### Bug Fixes
+
+- update: rename JCORE_MAAILMA_RELEASE constant to JCORE_MAAILMA_RELEASE_URL (5887c69)
+
+### v1.5.3 (2026-05-12)
 
 #### Bug Fixes
 
