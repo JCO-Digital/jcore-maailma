@@ -35,7 +35,7 @@ function update( $transient ) {
 
 	if (
 		isset( $update->new_version ) &&
-		version_compare( $plugin_data['Version'], $update->new_version, '<' )
+		version_compare( $plugin_data['version'], $update->new_version, '<' )
 	) {
 		$transient->response[ $plugin_data['plugin'] ] = $update;
 	} else {
