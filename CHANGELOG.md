@@ -1,6 +1,16 @@
 # Changelog
 
-## 1.6.0 (2026-06-03)
+### 1.6.1 (2026-06-03)
+
+#### Continuous Integration
+
+- github: remove build and release steps from push workflow (3446e4c)
+
+#### Maintenance
+
+- build: remove generated build files and ignore directory (fd9b581)
+
+## v1.6.0 (2026-06-03)
 
 #### Features
 
