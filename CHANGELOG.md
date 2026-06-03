@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.5.4 (2026-05-12)
+## 1.6.0 (2026-06-03)
+
+#### Features
+
+- update: integrate jcore-update for plugin management (462428c)
+
+### v1.5.4 (2026-05-12)
 
 #### Bug Fixes
 
