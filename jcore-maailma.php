@@ -70,19 +70,19 @@ add_action(
 			return;
 		}
 
-		$plugin_data = get_data();
+		$version = PluginHelper::getVersion( JCORE_MAAILMA_PLUGIN_FILE );
 
 		wp_enqueue_style(
 			'jcore-maailma',
 			plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'css/jcore-maailma.css',
 			array(),
-			$plugin_data['version'],
+			$version,
 		);
 		wp_enqueue_script(
 			'jcore-maailma',
 			plugin_dir_url( JCORE_MAAILMA_PLUGIN_FILE ) . 'js/jcore-maailma.js',
 			array(),
-			$plugin_data['version'],
+			$version,
 			true,
 		);
 	}
