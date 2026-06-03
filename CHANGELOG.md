@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.6.1 (2026-06-03)
+### 1.6.2 (2026-06-03)
+
+#### Bug Fixes
+
+- replace local version fetching with PluginHelper and remove update logic (a5f8df7)
+
+### v1.6.1 (2026-06-03)
 
 #### Continuous Integration
 
