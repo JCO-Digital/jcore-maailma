@@ -1,0 +1,13 @@
+.github
+.idea
+.zipexclude
+release
+Makefile
+vendor
+node_modules
+src/
+foonver.toml
+package.json
+phpcs.xml
+pnpm-lock.yaml
+webpack.config.js

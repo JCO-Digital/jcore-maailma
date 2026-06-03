@@ -11,6 +11,10 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    outputs:
+      is_bumped: ${{ steps.foonver.outputs.is_bumped }}
+      version: ${{ steps.foonver.outputs.version }}
+      release_notes: ${{ steps.foonver.outputs.release_notes }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -59,3 +63,18 @@ jobs:
           files: |
             release/*
             package.json
+
+  # Call the reusable workflow from jcore-update
+  publish:
+    needs: release
+    if: needs.release.outputs.is_bumped == 'true'
+    uses: JCO-Digital/jcore-update/.github/workflows/reusable-plugin-publish.yml@main
+    with:
+      slug: "jcore-maailma"
+      version: ${{ needs.release.outputs.version }}
+      release_notes: ${{ needs.release.outputs.release_notes }}
+      plugin_file: "jcore-maailma.php"
+      dist_repo: "git@git.jcore.fi:/srv/git/jcore-maailma.git"
+    secrets:
+      UPDATE_API_KEY: ${{ secrets.UPDATE_API_KEY }}
+      DIST_REPO_SSH_KEY: ${{ secrets.DIST_REPO_SSH_KEY }}

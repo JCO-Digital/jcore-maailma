@@ -1,14 +1,17 @@
-.PHONY: all dev ci ci-install install build watch start stop clean
+.PHONY: all dev ci ci-install install build release watch start stop clean
 
 all: install build
 
 dev: install watch
 
-ci: install build
+ci: ci-install build
 
-ci-install: install
+ci-install:
+	composer install --no-dev --no-interaction --optimize-autoloader
+	pnpm i
 
 install:
+	composer install
 	pnpm i
 
 build:
@@ -16,7 +19,7 @@ build:
 
 release:
 	mkdir -p release
-	zip release/jcore-maailma.zip -r * -x @zip_exclude.txt
+	zip release/jcore-maailma.zip -r * -x @.zipexclude
 
 watch:
 	pnpm run watch

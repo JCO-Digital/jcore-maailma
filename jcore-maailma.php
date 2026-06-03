@@ -17,8 +17,16 @@
 
 namespace Jcore\Maailma;
 
+use Jcore\Update\Config\UpdateConfig;
+use Jcore\Update\Hooks\PluginUpdateHooks;
+use Jcore\Update\Support\PluginHelper;
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit(); // Exit if accessed directly.
+	exit;
+}
+
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 define( 'JCORE_MAAILMA_PLUGIN_FILE', __FILE__ );
@@ -32,7 +40,6 @@ define( 'JCORE_MAAILMA_POST_TYPE', 'jcore-global-content' );
 require_once __DIR__ . '/post-type.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/timber.php';
-require_once __DIR__ . '/update.php';
 
 /**
  * Let Jcore know we are loaded.
@@ -44,6 +51,14 @@ add_filter(
 		return $plugins;
 	}
 );
+
+$config = new UpdateConfig(
+	pluginFile: JCORE_MAAILMA_PLUGIN_FILE,
+	slug: 'jcore-maailma',
+	version: PluginHelper::getVersion( JCORE_MAAILMA_PLUGIN_FILE ),
+	apiBaseUrl: 'https://update.jcore.fi/v1',
+);
+( new PluginUpdateHooks( $config ) )->register();
 
 add_action(
 	'admin_enqueue_scripts',
