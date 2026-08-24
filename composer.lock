@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c990a0516f57031125015d24a0d8e08",
+    "content-hash": "a8faa59e1b1e79d1d09bd6bce4f27aec",
     "packages": [
         {
             "name": "jcodigital/jcore-update",
