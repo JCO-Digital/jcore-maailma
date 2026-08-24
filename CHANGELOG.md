@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.6.3 (2026-08-24)
+### 1.6.4 (2026-08-24)
+
+#### Maintenance
+
+- composer: update jcore-update to v1.2 (ed1c39e)
+
+### v1.6.3 (2026-08-24)
 
 #### Build System
 
