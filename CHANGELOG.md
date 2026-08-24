@@ -1,6 +1,12 @@
 # Changelog
 
-### 1.6.2 (2026-06-03)
+### 1.6.3 (2026-08-24)
+
+#### Build System
+
+- composer: update dependencies (3e04d82)
+
+### v1.6.2 (2026-06-03)
 
 #### Bug Fixes
 
