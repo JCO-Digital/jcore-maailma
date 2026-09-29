@@ -1,5 +1,5 @@
 parser = "all"
-version-sync = ["jcore-maailma.php", "readme.txt", "package.json"]
+version-sync = ["jcore-maailma.php", "readme.txt"]
 changelog = true
 changelog-format = "wordpress"
 changelog-file = "readme.txt"
