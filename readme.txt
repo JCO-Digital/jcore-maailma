@@ -4,7 +4,7 @@ Tags: global content, reusable content, block, timber, polylang
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 8.2
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,13 @@ No. The post type is not public. It exists only to be placed in other content or
 
 == Changelog ==
 
+= 1.6.5 (2026-09-29) =
+
+* Fix: Remove package.json from version sync configuration
+* Documentation: readme - add readme.txt with changelog and move changelog generation there
+* Build: deps - update jcore-update to 1.7.0
+* CI: GitHub - Add Slack notifications to push workflow
+
 = v1.6.4 (2026-08-24) =
 
 * Maintenance: composer - update jcore-update to v1.2
@@ -70,7 +77,7 @@ No. The post type is not public. It exists only to be placed in other content or
 
 = v1.6.1 (2026-06-03) =
 
-* Continuous Integration: github - remove build and release steps from push workflow
+* CI: github - remove build and release steps from push workflow
 * Maintenance: build - remove generated build files and ignore directory
 
 = v1.6.0 (2026-06-03) =
@@ -101,20 +108,20 @@ No. The post type is not public. It exists only to be placed in other content or
 
 = v1.4.4 (2026-05-11) =
 
-* Continuous Integration: github - enable direct push for version bumping
+* CI: github - enable direct push for version bumping
 
 = v1.4.3 (2026-05-11) =
 
-* Continuous Integration: github - sync version from jcore-maailma.php during release
+* CI: github - sync version from jcore-maailma.php during release
 
 = v1.4.2 (2026-05-11) =
 
-* Continuous Integration: github - update foonver version and add protected branch push step
-* Continuous Integration: github - update release workflow configuration and downgrade version
-* Continuous Integration: github - update branch trigger and foonver action version
-* Continuous Integration: github - enable auto-push and remove redundant push step
-* Continuous Integration: github - replace add-and-commit action with push-protected
-* Continuous Integration: workflow - migrate to foonver for releases and update CI configuration
+* CI: github - update foonver version and add protected branch push step
+* CI: github - update release workflow configuration and downgrade version
+* CI: github - update branch trigger and foonver action version
+* CI: github - enable auto-push and remove redundant push step
+* CI: github - replace add-and-commit action with push-protected
+* CI: workflow - migrate to foonver for releases and update CI configuration
 
 = v1.4.1 (2026-03-10) =
 
@@ -144,13 +151,15 @@ No. The post type is not public. It exists only to be placed in other content or
 * Fix: post-type - insert slug column after title in admin posts list
 * Fix: content - generate unique slug and prevent recursive save when updating post_name
 * Refactor: content - replace filter_content with render_blocks to render block content
-* Documentation: updated readme file
+* Refactor: content - replace filter_content with render_blocks to render block content
+* Documentation: updated readme file.
 * Build: makefile - add start and stop targets
+* Maintenance: plugin - define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards
 * Maintenance: plugin - define JCORE_MAAILMA_PLUGIN_FILE and add phpcs.xml coding standards
 
 = v1.2.0 (2025-12-11) =
 
-* Feature: add filter to let Ydin know we are loaded
+* Feature: Add filter to let Ydin know we are loaded.
 
 = v1.1.1 (2025-12-11) =
 
@@ -158,28 +167,30 @@ No. The post type is not public. It exists only to be placed in other content or
 
 = v1.1.0 (2025-12-11) =
 
-* Feature: added composer.json and other versioning stuff, some renaming and cleanup
+* Feature: added composer.json and other versioning stuff + some renaming and cleanup
 * Fix: ci - add pnpm action setup to workflow
 * Fix: ci - rename the commitsar file with yml
 * Fix: do not check all commits but be strict
-* Continuous Integration: add Commitsar config and PR validation workflow
-* Continuous Integration: remove commitsar
-* Continuous Integration: fix YAML indentation in .commitsar.yml
-* Continuous Integration: set commitsar strict mode to false
-* Continuous Integration: update workflow actions to use v2 of jcore-module-actions
-* Continuous Integration: add build output for Global Content block
-* Continuous Integration: add Commitsar config and update changelog action settings
-* Continuous Integration: add GitHub Actions workflows for PR labeling, validation, and release
+* CI: Add Commitsar config and PR validation workflow
+* CI: remove commitsar
+* CI: Fix YAML indentation in .commitsar.yml
+* CI: Set commitsar strict mode to false
+* CI: Update workflow actions to use v2 of jcore-module-actions
+* CI: Add build output for Global Content block
+* CI: Add Commitsar config and update changelog action settings
+* CI: Add GitHub Actions workflows for PR labeling, validation, and release
 * Maintenance: ci - just configure the action to not use commitsar for now
 * Maintenance: ci - use v2.0.2 of the action
-* Refactor: global content retrieval and add editor block styling
+* Update .github/workflows/label.yml
+* Refactor global content retrieval and add editor block styling
 
 = v1.0.0 (2025-12-09) =
 
-* Feature: add Polylang support for global content post type
-* Feature: add global content post selection to block editor
-* Feature: add global content post type and helper function
+* Feature: Add Polylang support for global content post type
+* Feature: Add global content post selection to block editor
+* Feature: Add global content post type and helper function
 * Refactor: global content block and improve content filtering
-* Documentation: updated readme
-* Style: remove extra blank lines after add_action call
-* Maintenance: rename plugin to JCORE Maailma and update namespaces and paths
+* Documentation: Updated readme
+* Style: Remove extra blank lines after add_action call
+* Maintenance: Rename plugin to JCORE Maailma and update namespaces and paths
+* Initial commit
