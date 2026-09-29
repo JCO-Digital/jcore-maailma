@@ -6,7 +6,7 @@ Makefile
 vendor
 node_modules
 src/
-foonver.toml
+.foonver.toml
 package.json
 phpcs.xml
 pnpm-lock.yaml

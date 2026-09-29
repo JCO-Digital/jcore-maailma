@@ -17,7 +17,7 @@ JCORE Maailma (Finnish for "world") enables you to create reusable content block
 
 ## Requirements
 
-- WordPress 6.7 or higher
+- WordPress 6.7 or higher (tested up to 7.0)
 - PHP 8.2 or higher
 
 ## Installation
@@ -167,6 +167,7 @@ jcore-maailma/
 ├── post-type.php          # Post type registration
 ├── content.php            # Helper functions
 ├── timber.php             # Timber integration
+├── readme.txt             # WordPress plugin readme and changelog
 └── readme.md              # This file
 ```
 
@@ -212,9 +213,13 @@ if ( ! empty( $seasonal_message ) ) {
 ?>
 ```
 
+## Releases
+
+Releases are made with [foonver](https://github.com/foonly/foonver) from conventional commits. The version is synced to `jcore-maailma.php`, `readme.txt` and `package.json`, and the changelog is written to the `== Changelog ==` section of `readme.txt`, which WordPress shows in the plugin information popup. Do not edit that section by hand.
+
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for a detailed version history.
+See the changelog section of [readme.txt](readme.txt) for a detailed version history.
 
 ## Author
 

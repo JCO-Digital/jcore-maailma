@@ -4,6 +4,7 @@
  * Description:       A global content post type and block.
  * Version:           1.6.4
  * Requires at least: 6.7
+ * Tested up to:      7.0
  * Requires PHP:      8.2
  * Author:            J&Co Digital
  * Author URI:        https://jco.fi

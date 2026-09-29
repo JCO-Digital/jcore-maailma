@@ -26,4 +26,4 @@ node_modules
 *.zip
 Makefile
 .wp
-foonver.toml
+.foonver.toml
