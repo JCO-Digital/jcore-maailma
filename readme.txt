@@ -4,7 +4,7 @@ Tags: global content, reusable content, block, timber, polylang
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 8.2
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,7 +56,13 @@ No. The post type is not public. It exists only to be placed in other content or
 
 == Changelog ==
 
-= 1.6.5 (2026-09-29) =
+= 1.6.6 (2026-10-13) =
+
+* Fix: content - only render published global content, guard against self-inclusion
+* Fix: Only show content of the right type, if called with ID from other post type.
+* fix for rendering form fields and embeds
+
+= v1.6.5 (2026-09-29) =
 
 * Fix: Remove package.json from version sync configuration
 * Documentation: readme - add readme.txt with changelog and move changelog generation there
