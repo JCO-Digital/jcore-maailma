@@ -51,18 +51,22 @@ add_action( 'save_post_jcore-global-content', 'Jcore\Maailma\update_slug', 10, 3
  *
  * This function fetches the content of a 'jcore-global-content' post by its numeric ID or slug.
  * If a slug is provided, it attempts to resolve it to a post ID. If Polylang is active and translation
- * is enabled, it retrieves the translated post ID. The function then gets the post content and applies
- * content filters before returning it.
+ * is enabled, it retrieves the translated post ID. The function then renders the post's blocks
+ * and returns them. Only published global content is returned, and an item that is already
+ * being rendered (content that includes itself) returns an empty string.
  *
  * @param int|string $id        The post ID or slug of the global content.
  * @param bool       $translate Whether to retrieve the translated version if available. Default true.
- * @return string               The filtered post content, or an empty string if not found.
+ * @return string               The rendered content, or an empty string if not found or not published.
  */
 function get_global_content( $id, $translate = true ) {
 	if ( empty( $id ) ) {
 		return '';
 	} elseif ( is_numeric( $id ) ) {
 		$post_id = $id;
+		if ( get_post_type( $post_id ) !== JCORE_MAAILMA_POST_TYPE ) {
+			return '';
+		}
 	} else {
 		$content_post = get_page_by_path( $id, OBJECT, JCORE_MAAILMA_POST_TYPE );
 		if ( ! $content_post ) {
@@ -80,9 +84,25 @@ function get_global_content( $id, $translate = true ) {
 		return '';
 	}
 
-	$content = get_the_content( null, false, $post_id );
+	// Only published content is shown, also for the translated post.
+	if ( 'publish' !== get_post_status( $post_id ) ) {
+		return '';
+	}
 
-	return render_blocks( $content );
+	// Content that includes itself, directly or through other global content,
+	// would render forever: skip any item that is already being rendered.
+	static $rendering = array();
+	if ( isset( $rendering[ $post_id ] ) ) {
+		return '';
+	}
+	$rendering[ $post_id ] = true;
+
+	$content = get_the_content( null, false, $post_id );
+	$output  = render_blocks( $content );
+
+	unset( $rendering[ $post_id ] );
+
+	return $output;
 }
 
 /**

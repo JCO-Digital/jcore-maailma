@@ -6,11 +6,15 @@
 	"title": "JCORE Global Content",
 	"category": "widgets",
 	"icon": "text-page",
-	"description": "",
+	"description": "Shows a global content item. Stores its slug, so a page moved to another site still finds it, and its id as a fallback.",
 	"attributes": {
 		"selectedPostId": {
 			"type": "integer",
 			"default": 0
+		},
+		"selectedSlug": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"example": {},

@@ -3,6 +3,7 @@ import { decodeEntities } from "@wordpress/html-entities";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 import { PanelBody, ComboboxControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
+import { useEffect } from "@wordpress/element";
 import ServerSideRender from "@wordpress/server-side-render";
 import "./editor.scss";
 
@@ -13,7 +14,7 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { selectedPostId } = attributes;
+	const { selectedPostId, selectedSlug } = attributes;
 
 	// Fetch posts of type 'jcore-global-content'
 	const posts = useSelect(
@@ -23,6 +24,17 @@ export default function Edit({ attributes, setAttributes }) {
 			}),
 		[],
 	);
+
+	// Blocks saved before the slug was stored get it filled in when opened.
+	useEffect(() => {
+		if (!selectedPostId || selectedSlug || !posts) {
+			return;
+		}
+		const post = posts.find((item) => item.id === selectedPostId);
+		if (post?.slug) {
+			setAttributes({ selectedSlug: post.slug });
+		}
+	}, [selectedPostId, selectedSlug, posts, setAttributes]);
 
 	const postOptions = posts
 		? posts.map((post) => ({
@@ -42,11 +54,14 @@ export default function Edit({ attributes, setAttributes }) {
 							{ label: __("Select a post", "jcore-maailma"), value: 0 },
 							...postOptions,
 						]}
-						onChange={(value) =>
+						onChange={(value) => {
+							const id = parseInt(value, 10) || 0;
+							const post = posts?.find((item) => item.id === id);
 							setAttributes({
-								selectedPostId: parseInt(value, 10) || 0,
-							})
-						}
+								selectedPostId: id,
+								selectedSlug: post?.slug ?? "",
+							});
+						}}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -54,7 +69,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div {...useBlockProps()}>
 				<ServerSideRender
 					block="jco/global-content"
-					attributes={{ ...attributes, preview: true }}
+					attributes={attributes}
 				/>
 			</div>
 		</>
